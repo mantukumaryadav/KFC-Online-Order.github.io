@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC-Online Order</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="../src/script.js"></script>
+
+    
+</head>
+<body class="container-fluid">
+    <header>
+        <img src="../public/Images/kfctop.jpg" width="100%" height="200">
+    </header>
+    <section>
+        <div class="accordian " id="kfcForm">
+            <div class="accordian-item">
+                <div class="accordian-header">
+                    <button class="btn btn-danger w-100" data-bs-target="#customer" data-bs-toggle="collapse">
+                        Customer Info
+                    </button>
+                </div>
+                <div class="accordian-collapse collapse show" id="customer" data-bs-parent="#kfcForm">
+                    <div class="accordian-body">
+                        <dl>
+                            <dt>Customer Name</dt>
+                            <dd><input type="text" id="txtName" class="form-control"></dd>
+                            <dt>Mobile Number</dt>
+                            <dd><input type="text" id="txtMobile" class="form-control"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="accordian-item">
+                <div class="accordian-header">
+                    <button class="btn btn-danger w-100" data-bs-target="#meal" data-bs-toggle="collapse">
+                        Select a Meal
+                    </button>
+                </div>
+                <div class="accordian-collapse collapse" id="meal" data-bs-parent="#kfcForm">
+                    <div class="accordian-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/tandoori.jpg" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>Zinger Tandoori Box</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3><input type="radio" class="form-check-input" name="meal" value="Zinger Tandoori Box" id="optTandoori"> &#8377; 313.33</h3>
+                                        <p>A Box with you Get 1 pc Hot & Crispy, 2 Hot Wings & 1 Chicken Strip</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/biryani.jpg" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>Classic Biryani Combo</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3><input type="radio" class="form-check-input" name="meal" value="Classic Biryani Combo" id="optBiryani"> &#8377; 740.00</h3>
+                                        <p>Large Biryani rice with 2 Hot & Crispy, 2 Gravies, 4 Strips & 1 Pepsi 500ml</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                  
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div accordion-header>
+                    <button class="btn btn-danger w-100" data-bs-target="#AdOn" data-bs-toggle="collapse">
+                        Select Ad-ON's
+                    </button>
+                </div>
+                <div class="accordian-collapse collapse" id="AdOn" data-bs-parent="#kfcForm">
+                    <div class="accordian-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/big 8.jpg" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>Big 8</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3><input type="checkbox" class="form-check-input"  value="Big 8" id="optBig"> &#8377; 680.74</h3>
+                                        <p>on this variety bucket of 4pc Hot & Crispy chicken & 4pc Smoky Red chicken</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../public/Images/chizza.jpg" class="card-img-top" height="200">
+                                    <div class="card-header">
+                                        <h2>Chizza</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3><input type="checkbox" class="form-check-input"  value="Chizza" id="optChizza"> &#8377; 299.05</h3>
+                                        <p>Crunchy chicken topped with cheese, spicy sauce, veggies & herbs. All-chicken-no-crust...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <button onclick="OrderClick()" class="btn btn-danger w-100" data-bs-target="#Summary" data-bs-toggle="modal">Place Order</button>
+                                <div class="modal fade" id="Summary">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2>Your Bill Summary</h2>
+                                                <button data-bs-dismiss="modal" class="btn-close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <dl class="row">
+                                                    <dt class="col-3">Customer Name</dt>
+                                                    <dd class="col-9" id="lblName"></dd>
+                                                    <dt class="col-3">Mobile</dt>
+                                                    <dd class="col-9" id="lblMobile"></dd>
+                                                    <dt class="col-3">Meal</dt>
+                                                    <dd class="col-9" id="lblMeal"></dd>
+                                                    <dt class="col-3">Ad-ON's</dt>
+                                                    <dd class="col-9" id="lblAdOn"></dd>
+                                                    <dt class="col-3">Total</dt>
+                                                    <dd class="col-9" id="lblTotal"></dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
